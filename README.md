@@ -28,7 +28,7 @@ The following **stretch** user stories are implemented:
 The following **additional** user stories are implemented:
 
 - [x] List anything else that you can get done to improve the app functionality! (+1-3pts)
-a log out method and button was created so that we can return to the log in page. 
+a log out button and action was created so that we can return to the log in page. 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -39,13 +39,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/Xmbqf5H.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I had trouble creating the bubble view constraints.
 
 ## License
 

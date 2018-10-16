@@ -30,7 +30,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self as UITableViewDataSource
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
         retrieveChatMessages()
         onTimer()
         

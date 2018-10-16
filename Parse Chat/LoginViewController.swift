@@ -20,8 +20,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -39,29 +37,7 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
-                
-                
-                //beginning of alert message:
-                //needed to create alert message
-                let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
-                // create a cancel action if nothing is pressed on the displayed screen
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                    // handle cancel response here. Doing nothing will dismiss the view.
-                }
-                // add the cancel action to the alertController
-                alertController.addAction(cancelAction)
-                
-                // add an ok button
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                }
-                // add the OK button to the alert controller
-                alertController.addAction(OKAction)
-                //displays the alert message
-                self.present(alertController, animated: true) {
-                    //end of alert message.
-                    
-                    
-                }
+                self.usernameAlreadyExists()
                 
             } else {
                 print("User Registered successfully")
@@ -83,27 +59,7 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
             if let error = error {
                 print("User log in failed: \(error.localizedDescription)")
-                
-                
-                //beginning of alert message:
-                //needed to create alert message
-                let alertController = UIAlertController(title: "Error", message: "Incorrect username or password. Please Try again.", preferredStyle: .alert)
-                // create a cancel action if nothing is pressed on the displayed screen
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                    // handle cancel response here. Doing nothing will dismiss the view.
-                }
-                // add the cancel action to the alertController
-                alertController.addAction(cancelAction)
-                
-                // add an ok button
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                }
-                // add the OK button to the alert controller
-                alertController.addAction(OKAction)
-                //displays the alert message
-                self.present(alertController, animated: true) {
-                    //end of alert message.
-                }
+                self.loginFailed()
                 
             } else {
                 print("User logged in successfully")
@@ -114,8 +70,63 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func usernameAlreadyExists(){
+        
+        let alertController = UIAlertController(title: "Error", message: "Username already exists. Please try a different one.", preferredStyle: .alert)
+    
+        // add an ok button
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+        }
+        // add the OK button to the alert controller
+        alertController.addAction(OKAction)
+        //displays the alert message
+        self.present(alertController, animated: true) {
+            //end of alert message.
+        }
+    }
     
     
+    func missingField(){
+        
+        //beginning of alert message:
+        //needed to create alert message
+        let alertController = UIAlertController(title: "Error", message: "Missing username or password.", preferredStyle: .alert)
+        
+        /*create a cancel action if nothing is pressed on the displayed screen
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // handle cancel response here. Doing nothing will dismiss the view.
+        }
+        // add the cancel action to the alertController
+        alertController.addAction(cancelAction)
+        */
+        
+        
+        // add an ok button
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+        }
+        // add the OK button to the alert controller
+        alertController.addAction(OKAction)
+        //displays the alert message
+        self.present(alertController, animated: true) {
+            //end of alert message.
+        }
+        
+    }
+    
+    func loginFailed(){
+     
+        let alertController = UIAlertController(title: "Error", message: "Incorrect username or password. Please try again.", preferredStyle: .alert)
+        
+        // add an ok button
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+        }
+        // add the OK button to the alert controller
+        alertController.addAction(OKAction)
+        //displays the alert message
+        self.present(alertController, animated: true) {
+            //end of alert message.
+        }
+    }
     
     
     // sign up button action
@@ -124,66 +135,24 @@ class LoginViewController: UIViewController {
         let testUser = (userNameField.text?.isEmpty)!
         if testPass || testUser == true {
             
-            //beginning of alert message:
-            //needed to create alert message
-            let alertController = UIAlertController(title: "Error", message: "Missing either username or password.", preferredStyle: .alert)
-            // create a cancel action if nothing is pressed on the displayed screen
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // handle cancel response here. Doing nothing will dismiss the view.
-            }
-            // add the cancel action to the alertController
-            alertController.addAction(cancelAction)
-            
-            // add an ok button
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            }
-            // add the OK button to the alert controller
-            alertController.addAction(OKAction)
-            //displays the alert message
-            self.present(alertController, animated: true) {
-                //end of alert message.
-            }
+            missingField()
         } else {
             
            signUp()
         }
-        
-        
-        
     }
-    
-    
+ 
     // log in button action
     @IBAction func onLogIn(_ sender: Any) {
         let testPass = (passwordField.text?.isEmpty)!
         let testUser = (userNameField.text?.isEmpty)!
         if testPass || testUser == true {
             
-            //beginning of alert message:
-            //needed to create alert message
-            let alertController = UIAlertController(title: "Error", message: "Missing either username or password.", preferredStyle: .alert)
-            // create a cancel action if nothing is pressed on the displayed screen
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // handle cancel response here. Doing nothing will dismiss the view.
-            }
-            // add the cancel action to the alertController
-            alertController.addAction(cancelAction)
-            
-            // add an ok button
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            }
-            // add the OK button to the alert controller
-            alertController.addAction(OKAction)
-            //displays the alert message
-            self.present(alertController, animated: true) {
-                //end of alert message.
-            }
+           missingField()
         } else {
             
             loginUser()
         }
-    
-        
     }
     
     
